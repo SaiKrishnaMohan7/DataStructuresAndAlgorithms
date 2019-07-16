@@ -44,7 +44,7 @@ class SetEnhanced {
       unionSet.count = unionSet.size;
 
       // The same object is not returned!
-      // This will not have enhanced methods, maybe that's whya it hasn't been implemetned yet
+      // This will not have enhanced methods, maybe that's why it hasn't been implemetned yet
       // Same would happen with Intersection
       return unionSet;
     }
