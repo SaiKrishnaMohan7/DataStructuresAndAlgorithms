@@ -1,56 +1,52 @@
-class SetEnhanced {
-  constructor() {
-    this.collection = [];
-    this.count = 0;
+Set.prototype.union = function (inputSet) {
+  const unionSet = new Set();
+  
+  for(const item of this) {
+    unionSet.add(item);
   }
 
-  has (item) {
-    return this.collection.indexOf(item) !== -1;
+  for(const item of inputSet) {
+    unionSet.add(item);
   }
 
-  size () {
-    return this.count;
-  }
+  return unionSet;
+};
 
-  add (item) {
-    if (!this.has(item)) {
-      this.collection.push(item);
-      this.count = this.count + 1;
+Set.prototype.intersection = function (inputSet) {
+  const intersectionSet = new Set();
 
-      return this.collection;
+  for (const inputItem of inputSet) {
+    if(this.has(inputItem)) {
+      intersectionSet.add(inputItem);
     }
   }
 
-  remove (item) {
-    if(this.has(item)) {
-      const index = this.collection.indexOf(item);
-      const removed = this.collection.splice(index, 1);
-      this.count = this.count -1;
+  return intersectionSet;
+};
 
-      return removed[0];
-    } else {
-      throw new Error('Itme doesn\'t exist!');
+Set.prototype.difference = function (inputSet) {
+  const differenceSet = new Set();
+
+  for (const inputItem of inputSet) {
+    if(!this.has(inputItem)) {
+      differenceSet.add(inputItem);
     }
   }
 
-  union (inputSet) {
-    if (inputSet instanceof SetEnhanced) {
-      const unionSet = new Set(); // The default ES6 Set
-      const { collection: inputSetCollection } = inputSet;
-
-      this.collection.map(setItem => unionSet.add(setItem));
-      inputSetCollection.map(inputSetItem => unionSet.add(inputSetItem));
-
-      unionSet.count = unionSet.size;
-
-      // The same object is not returned!
-      // This will not have enhanced methods, maybe that's why it hasn't been implemetned yet
-      // Same would happen with Intersection
-      return unionSet;
-    }
-    // TODO: Handle else case
-  }
-  // TODO: Intersection
-  // TODO: Difference
-  // TODO: Subset
+  return differenceSet;
 }
+
+Set.prototype.subset = function (inputSet) {
+  if (this.size < inputSet.size) {
+    return false;
+  } else {
+    for (const item of this) {
+      if (!inputSet.has(item)) {
+        return false;
+      }
+    }
+    return true;
+  }
+}
+
+export default Set;
