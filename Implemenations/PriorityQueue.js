@@ -34,7 +34,7 @@ class PriorityQueue {
   }
 
   dequeue () {
-    const removed = this.storage.shift();
+    const removed = this.storage.shift(); //test
     this.count--;
 
     return removed;
