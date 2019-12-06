@@ -1,4 +1,5 @@
-class Stack {
+// https://stackoverflow.com/questions/42684177/node-js-es6-classes-with-require
+module.exports = class Stack {
   constructor() {
     this.storage = {};
     this.count = 0;
@@ -14,7 +15,7 @@ class Stack {
       return undefined;
     }
 
-    const popped = this.storage[this.count];
+    const popped = this.storage[this.count - 1];
     delete this.storage[this.count];
     this.count --;
 
@@ -28,6 +29,8 @@ class Stack {
   size () {
     return this.count;
   }
-}
 
-export default Stack;
+  isEmpty() {
+    return this.count === 0;
+  }
+}
