@@ -24,7 +24,7 @@ var reverse = function(x) {
   if (x >= 0) {
       reversed = reverser(x);
       if(checkOverflow(reversed)){
-        return reverser(x);
+        return reversed;
       }
   } else {
       let unsignedX = Math.abs(x);
@@ -36,3 +36,34 @@ var reverse = function(x) {
 
   return 0;
 };
+
+// const MAX_INT_DIVIDED_BY_10 = Math.floor((Math.pow(2, 31) - 1)//10);
+// // doing some funny stuff with the signs since your check overflow takes positive ints so we actually want this to be positive
+// const MIN_INT_DIVIDED_BY_10 = Math.abs( Math.floor(Math.pow(-2, 31)//10) );
+
+// const checkOverflow = function(rev, rem, positive) {
+//     if (positive) {
+//         // Check that multiplying x by 10 won't overflow
+//         // i.e. the current reversed value isn't greater than (2^31 -1) // 10
+//         // OR if it's equal to (2^31-1), the remainder we're adding isn't greater than the
+//         // the last digit of (2^31-1) = 2147483647 -> 7
+//         return rev > MAX_INT_DIVIDED_BY_10 || (rev == MAX_INT_DIVIDED_BY_10 &&  rem > 7);
+//     } else {
+//         // Do similar for the negative check, but verify the added value is less than the last digit of min int
+//         // -2147483648 -> -8
+//         return rev > MIN_INT_DIVIDED_BY_10 || (rev == MIN_INT_DIVIDED_BY_10 &&  rem < 8)
+//     }
+// }
+
+// const reverser = function (x, positive) {
+//     let rev = 0;
+//     while(x != 0) {
+//         rem = x % 10;
+//         safer flow than my solution by @bshaibu
+//         if (checkOverflow(rev, rem, positive) {
+//             rev = rev * 10;
+//             rev = rev + rem;
+//             x = Math.floor(x / 10);
+//     }
+//     return rev;
+// };
