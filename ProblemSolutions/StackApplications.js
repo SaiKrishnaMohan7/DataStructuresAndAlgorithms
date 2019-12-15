@@ -28,12 +28,13 @@ function stringReversal(str) {
 
 // console.log(stringReversal('abcd'));
 
+// This solution is shit
 function isBalanced(str) {
   // https://stackoverflow.com/questions/4547609/how-do-you-get-a-string-to-a-character-array-in-javascript/34717402#34717402
   const charArr = str.split('');
   const stack = new Stack();
-  const leftBrackets = ['(', '<', '{','['];
-  const rightBrackets = [')', '>', '}', ']'];
+  const leftBrackets = ['(', '<', '[', '{'];
+  const rightBrackets = [')', '>', ']', '}'];
 
   const isLeftExpression = expr => {
     return leftBrackets.includes(expr);
@@ -52,7 +53,8 @@ function isBalanced(str) {
     if (isLeftExpression(char)) {
       stack.push(char);
     }
-    if (isRightExpression(char) && !stack.isEmpty()) {
+    if (isRightExpression(char)) {
+      if (stack.isEmpty()) return false;
       const top = stack.pop();
       if (doBracketsMatch(top, char)) {
         return true;
@@ -62,3 +64,5 @@ function isBalanced(str) {
 
   return stack.isEmpty();
 }
+
+// console.log(isBalanced('(]'));
