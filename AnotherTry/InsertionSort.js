@@ -15,16 +15,15 @@
 
 function insertionSort (nums) {
   const length = nums.length;
-  let swap;
+  let spliced;
 
   for (let i = 0; i < length; i ++) {
     for(let j = i+1 ; j < length; j++) {
       snapshot(nums);
 
       if(nums[i] > nums[j]) {
-        swap = nums[i];
-        nums[i] = nums[j];
-        nums[j] = swap;
+        spliced = nums.splice(i, 1);
+        nums.splice(j, 0, spliced);
       }
     }
   }
