@@ -5,7 +5,7 @@
 
   The idea here is that the beginning of your list is sorted and the everything else is assumed to be an unsorted mess.
   The outer loop goes over the whole list, the index of which signifies where the "sorted" part of the list is. The inner
-  loop goes over the sorted part of the list and inserts it into the correct position in the array.
+  loop goes over the unsorted part of the list and inserts it into the correct position in the array.
 
   Like bubble sort, there's a visualization mechanism available to you. Just call snapshot(myArray) at the beginning of
   your inner loop and it should handle the rest for you!
@@ -17,11 +17,13 @@ function insertionSort (nums) {
   const length = nums.length;
   let spliced;
 
-  for (let i = 0; i < length; i ++) {
-    for(let j = i+1 ; j < length; j++) {
+  // The BEGINING of the list is assumed sorted; goes over whole array
+  for (let i = 1; i < length; i ++) {
+    // Goes over unsorted part and inserts in the right position
+    for(let j = 0 ; j < i; j++) {
       snapshot(nums);
 
-      if(nums[i] > nums[j]) {
+      if(nums[i] < nums[j]) {
         spliced = nums.splice(i, 1);
         nums.splice(j, 0, spliced);
       }
