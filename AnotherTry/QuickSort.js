@@ -19,7 +19,7 @@
 function quickSort(nums) {
   const length = nums.length;
   // base case
-  if (length <= 1) {
+  if (length < 2) {
     return nums;
   }
 
@@ -52,3 +52,17 @@ describe('quickSort', function() {
 
   });
 });
+
+/**
+ * Quicksort 3
+ *
+ * To mitigate the risk of a sorted list
+ * To chosse pivot, take the value at first index,
+ * middle index and last index.
+ *
+ * Then amonsgt the three, take the one that is the middle of
+ * the three
+ *
+ * ex: [x, a, v, y, t, z]; first = x, middle = v, last z
+ * from these three, pick the vaue that is in between the smallest and largest
+ */
