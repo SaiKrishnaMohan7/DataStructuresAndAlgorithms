@@ -20,7 +20,7 @@ class HashTable {
   hash(item, max) {
     let num;
     for (let i = 0; i < item.length; i++) {
-      num = num + item.getCharAt(i) * i
+      num = num + item.charCodeAt(i) * i;
     }
 
     return num % max;
