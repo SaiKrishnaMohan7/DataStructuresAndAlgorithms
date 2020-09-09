@@ -44,3 +44,7 @@ function findAvgOfSubArrEfficient(arr, k) {
 
 const resultEffixient = findAvgOfSubArrEfficient([1, 3, 2, 6, -1, 4, 1, 8, 2], 5);
 console.log(`Averages of subarrays of size K: ${resultEffixient}`);
+
+
+// 1. Subtract the element going out of the sliding window i.e., subtract the first element of the window.
+// 2. Add the new element getting included in the sliding window i.e., the element coming right after the end of the window.
