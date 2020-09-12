@@ -8,8 +8,7 @@ function longestSubstringWithKdistinctCharacters(str, k) {
 
   for (let windowEnd = 0; windowEnd <= str.length; windowEnd++) {
     rightChar = str[windowEnd];
-    // First, we will insert characters from the beginning of the string until we have ‘K’ distinct characters in the HashMap.
-    // If char exists increment by 1 else 0
+
     if (!charFreq.has(rightChar)) {
       charFreq.set(rightChar, 0);
     }
