@@ -1,3 +1,5 @@
+// Find the length (max; windowSize!) of the sub string when number of distinct characters (just like sum is given find window) given
+
 // Time: O(n); Space: O(K) since we store K + 1 characters in the Map
 function longestSubstringWithKdistinctCharacters(str, k) {
   let maxLength = 0;

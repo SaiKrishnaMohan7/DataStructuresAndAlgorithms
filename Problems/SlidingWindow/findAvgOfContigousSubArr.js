@@ -1,3 +1,5 @@
+// Find Avg when window size is given; Length of the sub-array is given average or sum is to be found
+
 // Brute force method: For every element, we calcluate the sum the next k elements so O(n * k)
 function findAvgOfSubArrays(arr, k) {
   let result = [];

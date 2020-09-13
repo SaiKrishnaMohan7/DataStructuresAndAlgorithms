@@ -1,3 +1,6 @@
+// Find the (min) length of the window (sub-array) when the sum is given
+
+// Time: O(n) since while processes all elements once; Space: O(1)
 function findSmallestSubArrayWithAGivenSum(arr, givenSum) {
   let minLength = Infinity;
   let windowStart = 0;
