@@ -3,15 +3,15 @@ const find_string_anagrams = function(str, pattern) {
   let windowStart = 0;
   let matched = 0;
   let leftChar, rightChar, ch = '';
-  let patternCharFreq = new Map();
+  let patternCharFreq = {};
 
   // pattern into a map
   for (let i = 0; i < pattern.length; i++) {
     ch = pattern[i];
-    if (patternCharFreq.has(ch)) {
-      patternCharFreq.set(ch, patternCharFreq.get(ch) + 1);
+    if (!(ch in patternCharFreq)) {
+      patternCharFreq[ch] = 0;
     }
-    patternCharFreq.set(ch, 0);
+    patternCharFreq[ch] += 1;
   }
 
   // Slide window through given string
@@ -19,15 +19,15 @@ const find_string_anagrams = function(str, pattern) {
     rightChar = str[windowEnd];
 
     // if rightChar is in the map, reduce the freq of the char
-    if(patternCharFreq.has(rightChar)) {
-      patternCharFreq.set(rightChar, patternCharFreq.get(rightChar) - 1);
+    if(rightChar in patternCharFreq) {
+      patternCharFreq[rightChar] -= 1;
       // if the freq of char after reducing is 0 that means it is a match
-      if (patternCharFreq.get(rightChar) === 0) {
+      if (patternCharFreq[rightChar] === 0) {
         matched += 1;
       }
     }
     // if the matched is same as the pattern (Map size) that means that anagram exists! So push the index in to the arr
-    if (matched === patternCharFreq.size) {
+    if (matched === Object.keys(patternCharFreq).length) {
       // since we need to know where the anagram starts!
       resultIndices.push(windowStart);
     }
@@ -39,12 +39,12 @@ const find_string_anagrams = function(str, pattern) {
       // shrink the window by moving windowStart to the right
       windowStart += 1;
       // if leftChar is in the map, that means it is leaving the window so bump up its freq
-      if (patternCharFreq.has(leftChar)) {
-        if (patternCharFreq.get(leftChar) === 0) {
+      if (leftChar in patternCharFreq) {
+        if (patternCharFreq[leftChar] === 0) {
           // before putting the character back, decrement the matched count
           matched -= 1;
         }
-        patternCharFreq.set(leftChar, patternCharFreq.get(leftChar) + 1);
+        patternCharFreq[leftChar] += 1;
       }
     }
   }
