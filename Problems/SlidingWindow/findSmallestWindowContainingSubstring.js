@@ -1,8 +1,7 @@
 const find_substring = function(str, pattern) {
-  let windowStart = 0;
+  let windowStart, matched, substrStart = 0;
   let rightChar, leftChar, patternChar = '';
   let minLength = str.length + 1;
-  let matched, substrStart = 0;
   let patternCharFreq = {};
 
   // pattern to js obj
