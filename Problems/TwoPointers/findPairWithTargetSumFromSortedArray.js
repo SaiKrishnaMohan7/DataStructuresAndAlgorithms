@@ -28,3 +28,40 @@ const pair_with_targetsum = function(arr, target_sum) {
 
 // If the sum of the two numbers pointed by the two pointers is smaller than the target sum,
 // this means that we need a pair with a larger sum. So, to try more pairs, we can increment the start-pointer.
+
+/** Alternative Approach 1
+ * function pair_with_target_sum(arr, targetSum) {
+  let left = 0,
+    right = arr.length - 1;
+  while (left < right) {
+    const currentSum = arr[left] + arr[right];
+    if (currentSum === targetSum) {
+      return [left, right];
+    }
+
+    if (targetSum > currentSum) {
+      left += 1; // we need a pair with a bigger sum
+    } else {
+      right -= 1; // we need a pair with a smaller sum
+    }
+  }
+  return [-1, -1];
+}
+
+// Search for ‘Y’ (which is equivalent to “Target - XTarget−X”) in the HashTable.
+If it is there, we have found the required pair.
+// Otherwise, insert “X” in the HashTable, so that we can search it for the later numbers.
+
+  * Alternative Approach 2
+  function pair_with_target_sum(arr, targetSum) {
+  const nums = {}; // to store numbers and their indices
+  for (let i = 0; i < arr.length; i++) {
+    const num = arr[i];
+    if (targetSum - num in nums) {
+      return [nums[targetSum - num], i];
+    }
+    nums[arr[i]] = i;
+  }
+  return [-1, -1];
+}
+ */
