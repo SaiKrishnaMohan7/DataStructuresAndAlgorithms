@@ -12,3 +12,5 @@ const remove_duplicates = function(arr) {
   }
   return next;
 };
+
+// arr => { let deDuped = [...new Set(arr)]}; The JS way
